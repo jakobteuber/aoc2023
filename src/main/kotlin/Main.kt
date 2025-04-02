@@ -36,8 +36,9 @@ fun String.findLong(regex: String) =
 fun String.findString(regex: String) =
     regex.toRegex().find(this)?.groups?.get(1)?.value
 
-fun <T> List<T>.withSet(index: Int, element: T) =
-    mapIndexed { i, t -> if (i == index) element else t }
+fun String.withSet(index: Int, char: Char) =
+    mapIndexed { i, t -> if (i == index) char else t }
+        .joinToString("")
 
 infix fun <A, B> Iterable<A>.cartesianProduct(right: Iterable<B>) =
     flatMap { a -> right.map { b -> a to b } }
